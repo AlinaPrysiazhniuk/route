@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 
 const Products = () => {
   const [products, setProducts] = useState([
@@ -9,6 +9,9 @@ const Products = () => {
     'product-4 ',
     'product-5 ',
   ]);
+  const location = useLocation();
+  console.log(location);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const productId = searchParams.get('productId') ?? '';
 
@@ -32,7 +35,9 @@ const Products = () => {
         {visibleProducts.map(product => {
           return (
             <li key={product}>
-              <Link to={`${product}`}>{product}</Link>
+              <Link to={`${product}`} state={{ from: location }}>
+                {product}
+              </Link>
             </li>
           );
         })}
