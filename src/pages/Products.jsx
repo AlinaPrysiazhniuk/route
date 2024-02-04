@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSearchParams, Link, useLocation } from 'react-router-dom';
 
 const Products = () => {
-  const [products, setProducts] = useState([
+  const [products] = useState([
     'product-1 ',
     'product-2 ',
     'product-3 ',
@@ -10,6 +10,7 @@ const Products = () => {
     'product-5 ',
   ]);
   const location = useLocation();
+  //setProducts();
   console.log(location);
 
   const [searchParams, setSearchParams] = useSearchParams();

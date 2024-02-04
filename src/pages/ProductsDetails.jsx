@@ -1,17 +1,16 @@
 import { useParams, Link, useLocation, Outlet } from 'react-router-dom';
+import { useRef } from 'react';
 
 const ProductsDetails = () => {
   const { productId } = useParams();
 
   const location = useLocation();
-  console.log(location);
+  const backLinkLocationRef = useRef(location.state?.from ?? '/products');
 
   return (
     <>
       <h1>Products details: {productId}</h1>
-      <Link to={location.state?.from ?? '/products'}>
-        Назад до сторінки колекції
-      </Link>
+      <Link to={backLinkLocationRef.current}>Назад до сторінки колекції</Link>
       <ul>
         <li>
           <Link to="type">Типи продуктів</Link>
