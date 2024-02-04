@@ -1,5 +1,8 @@
+import { useParams } from 'react-router-dom';
+
 const Gallery = () => {
-  return <div>Галерея продукту</div>;
+  const { productId } = useParams();
+  return <div>Галерея продукту: {productId}</div>;
 };
 
 export default Gallery;
